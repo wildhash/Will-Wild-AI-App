@@ -59,7 +59,8 @@ class CrisisDetector:
             patterns_file = Path("src/data/crisis_patterns.json")
             if patterns_file.exists():
                 with open(patterns_file, 'r') as f:
-                    return json.load(f)
+                    data = json.load(f)
+                    return data.get("crisis_patterns", {})
         except Exception as e:
             logger.error(f"Error loading crisis patterns: {str(e)}")
         
@@ -69,60 +70,58 @@ class CrisisDetector:
         """Get default crisis patterns when file loading fails."""
         return {
             "immediate_risk": {
-                "patterns": [
-                    r"\b(kill myself|end my life|suicide plan|take my life)\b",
-                    r"\b(going to die|want to die|ready to die)\b",
-                    r"\b(can't go on|can't take it|end it all)\b"
+                "keywords": [
+                    "kill myself", "end my life", "suicide plan", "take my life",
+                    "going to die", "want to die", "ready to die", "can't go on", "end it all"
                 ],
                 "severity": "critical",
                 "requires_immediate_action": True,
                 "confidence_threshold": 0.9
             },
             "suicidal_ideation": {
-                "patterns": [
-                    r"\b(suicid|better off dead|don't want to live)\b",
-                    r"\b(life isn't worth|no reason to live|hopeless)\b",
-                    r"\b(everyone would be better|burden to everyone)\b"
+                "keywords": [
+                    "suicide", "better off dead", "don't want to live",
+                    "life isn't worth", "no reason to live", "hopeless",
+                    "everyone would be better", "burden to everyone"
                 ],
                 "severity": "high",
                 "requires_immediate_action": True,
                 "confidence_threshold": 0.8
             },
             "self_harm": {
-                "patterns": [
-                    r"\b(cut myself|hurt myself|self harm|cutting)\b",
-                    r"\b(burn myself|scratch myself|hit myself)\b",
-                    r"\b(punish myself|deserve pain)\b"
+                "keywords": [
+                    "cut myself", "hurt myself", "self harm", "cutting",
+                    "burn myself", "scratch myself", "hit myself", "punish myself", "deserve pain"
                 ],
                 "severity": "high",
                 "requires_immediate_action": False,
                 "confidence_threshold": 0.8
             },
             "substance_crisis": {
-                "patterns": [
-                    r"\b(overdose|too many pills|drinking too much)\b",
-                    r"\b(can't stop using|addicted|substance problem)\b",
-                    r"\b(drugs and alcohol|using heavily)\b"
+                "keywords": [
+                    "overdose", "too many pills", "drinking too much",
+                    "can't stop using", "addicted", "substance problem",
+                    "drugs and alcohol", "using heavily"
                 ],
                 "severity": "high",
                 "requires_immediate_action": False,
                 "confidence_threshold": 0.7
             },
             "violence_risk": {
-                "patterns": [
-                    r"\b(hurt someone|kill them|violent thoughts)\b",
-                    r"\b(can't control anger|want to hurt|rage)\b",
-                    r"\b(weapon|gun|knife|violent plan)\b"
+                "keywords": [
+                    "hurt someone", "kill them", "violent thoughts",
+                    "can't control anger", "want to hurt", "rage",
+                    "weapon", "gun", "knife", "violent plan"
                 ],
                 "severity": "critical",
                 "requires_immediate_action": True,
                 "confidence_threshold": 0.9
             },
             "severe_distress": {
-                "patterns": [
-                    r"\b(can't cope|falling apart|losing it)\b",
-                    r"\b(panic attack|can't breathe|heart racing)\b",
-                    r"\b(going crazy|losing my mind|insane)\b"
+                "keywords": [
+                    "can't cope", "falling apart", "losing it",
+                    "panic attack", "can't breathe", "heart racing",
+                    "going crazy", "losing my mind", "insane"
                 ],
                 "severity": "medium",
                 "requires_immediate_action": False,
@@ -187,11 +186,15 @@ class CrisisDetector:
         
         for pattern_type, pattern_info in self.crisis_patterns.items():
             compiled[pattern_type] = []
-            for pattern in pattern_info.get("patterns", []):
+            # Use "keywords" from JSON which are treated as literal patterns
+            keywords = pattern_info.get("keywords", [])
+            for keyword in keywords:
                 try:
+                    # Convert keywords to regex patterns for word boundary matching
+                    pattern = r'\b' + re.escape(keyword) + r'\b'
                     compiled[pattern_type].append(re.compile(pattern, re.IGNORECASE))
                 except re.error as e:
-                    logger.error(f"Invalid regex pattern '{pattern}': {str(e)}")
+                    logger.error(f"Invalid keyword pattern '{keyword}': {str(e)}")
         
         return compiled
     

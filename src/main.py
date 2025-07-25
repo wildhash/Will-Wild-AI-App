@@ -5,6 +5,11 @@ This module sets up the main FastAPI application, configures routes,
 middleware, and initializes core services.
 """
 
+import sys
+import os
+# Add the parent directory to Python path so we can import config
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel

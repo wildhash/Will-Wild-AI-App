@@ -106,7 +106,7 @@ class GeminiService:
         TODO: Add context-aware prompt customization
         TODO: Include CBT and therapeutic framework guidance
         """
-        base_prompt = f\"\"\"You are a compassionate, professional mental health support AI assistant. 
+        base_prompt = f"""You are a compassionate, professional mental health support AI assistant. 
 Your role is to provide empathetic, evidence-based support using principles from cognitive-behavioral therapy (CBT) and person-centered therapy.
 
 IMPORTANT GUIDELINES:
@@ -133,7 +133,7 @@ Please provide a therapeutic response that:
 3. Offers gentle guidance or coping strategies if appropriate
 4. Maintains a warm, non-judgmental tone
 
-Response:\"\"\"
+Response:"""
         
         return base_prompt
     
@@ -251,7 +251,7 @@ Response:\"\"\"
         TODO: Add emotion classification and intensity scoring
         """
         try:
-            prompt = f\"\"\"Analyze the emotional content and sentiment of the following text. 
+            prompt = f"""Analyze the emotional content and sentiment of the following text. 
 Provide a JSON response with:
 - primary_emotion: the main emotion detected
 - intensity: scale of 1-10
@@ -261,7 +261,7 @@ Provide a JSON response with:
 
 Text: "{text}"
 
-Response (JSON format):\"\"\"
+Response (JSON format):"""
             
             response = await self._generate_with_retry(self.model.start_chat(), prompt)
             
@@ -302,7 +302,7 @@ Response (JSON format):\"\"\"
         TODO: Add exercise tracking and effectiveness measurement
         """
         try:
-            prompt = f\"\"\"Generate a brief, practical CBT (Cognitive Behavioral Therapy) exercise 
+            prompt = f"""Generate a brief, practical CBT (Cognitive Behavioral Therapy) exercise 
 for someone experiencing {emotion}. The exercise should be:
 - Evidence-based and therapeutic
 - Easy to understand and follow
@@ -318,7 +318,7 @@ Provide a JSON response with:
 - duration: estimated time in minutes
 - category: type of CBT technique
 
-Response (JSON format):\"\"\"
+Response (JSON format):"""
             
             response = await self._generate_with_retry(self.model.start_chat(), prompt)
             

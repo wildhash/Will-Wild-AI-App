@@ -7,7 +7,8 @@ This module handles loading environment variables, API keys, and application set
 import os
 from typing import Optional
 from dotenv import load_dotenv
-from pydantic import BaseSettings, Field
+from pydantic import Field
+from pydantic_settings import BaseSettings
 
 # Load environment variables from .env file
 load_dotenv()

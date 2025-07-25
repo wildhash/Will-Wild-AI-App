@@ -1,0 +1,139 @@
+2025-07-25 23:28:24,840 - config - INFO - GeminiService initialized successfully
+2025-07-25 23:28:24,841 - config - INFO - SafetyService initialized
+2025-07-25 23:29:46,198 - config - INFO - GeminiService initialized successfully
+2025-07-25 23:29:46,199 - config - INFO - SafetyService initialized
+2025-07-25 23:29:46,202 - config - INFO - CrisisDetector initialized
+2025-07-25 23:29:46,202 - config - INFO - ResourceMatcher initialized
+2025-07-25 23:29:46,202 - config - INFO - MoodAnalyzer initialized
+2025-07-25 23:29:46,202 - config - INFO - SafetyProtocols initialized
+2025-07-25 23:29:46,202 - config - INFO - TherapyAgent initialized
+2025-07-25 23:29:46,203 - config - INFO - SafetyService initialized
+2025-07-25 23:29:46,203 - config - INFO - MemoryService initialized
+2025-07-25 23:30:26,522 - config - INFO - GeminiService initialized successfully
+2025-07-25 23:30:26,522 - config - INFO - SafetyService initialized
+2025-07-25 23:30:26,525 - config - INFO - CrisisDetector initialized
+2025-07-25 23:30:26,526 - config - INFO - ResourceMatcher initialized
+2025-07-25 23:30:26,526 - config - INFO - MoodAnalyzer initialized
+2025-07-25 23:30:26,526 - config - INFO - SafetyProtocols initialized
+2025-07-25 23:30:26,526 - config - INFO - TherapyAgent initialized
+2025-07-25 23:30:26,526 - config - INFO - SafetyService initialized
+2025-07-25 23:30:26,526 - config - INFO - MemoryService initialized
+2025-07-25 23:30:27,161 - config - INFO - GeminiService initialized successfully
+2025-07-25 23:30:27,161 - config - INFO - SafetyService initialized
+2025-07-25 23:30:27,164 - config - INFO - CrisisDetector initialized
+2025-07-25 23:30:27,165 - config - INFO - ResourceMatcher initialized
+2025-07-25 23:30:27,165 - config - INFO - MoodAnalyzer initialized
+2025-07-25 23:30:27,165 - config - INFO - SafetyProtocols initialized
+2025-07-25 23:30:27,165 - config - INFO - TherapyAgent initialized
+2025-07-25 23:30:27,165 - config - INFO - SafetyService initialized
+2025-07-25 23:30:27,165 - config - INFO - MemoryService initialized
+2025-07-25 23:30:27,189 - config - INFO - GeminiService initialized successfully
+2025-07-25 23:30:27,189 - config - INFO - SafetyService initialized
+2025-07-25 23:30:27,189 - config - INFO - CrisisDetector initialized
+2025-07-25 23:30:27,190 - config - INFO - ResourceMatcher initialized
+2025-07-25 23:30:27,190 - config - INFO - MoodAnalyzer initialized
+2025-07-25 23:30:27,190 - config - INFO - SafetyProtocols initialized
+2025-07-25 23:30:27,190 - config - INFO - TherapyAgent initialized
+2025-07-25 23:30:27,190 - config - INFO - SafetyService initialized
+2025-07-25 23:30:27,190 - config - INFO - MemoryService initialized
+2025-07-25 23:30:27,193 - config - INFO - Starting Crisis Support & Mental Health Agent
+2025-07-25 23:30:27,193 - config - INFO - Services initialized successfully
+2025-07-25 23:30:27,286 - watchfiles.main - INFO - 4 changes detected
+2025-07-25 23:30:27,637 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:27,987 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:28,338 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:28,689 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:29,039 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:29,390 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:29,740 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:30,091 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:30,442 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:30,792 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:31,143 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:31,494 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:31,844 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:32,195 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:32,547 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:32,898 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:33,249 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:33,599 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:33,950 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:34,301 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:34,651 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:35,002 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:35,353 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:35,703 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:36,054 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:36,404 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:36,755 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:37,106 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:37,456 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:37,807 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:38,157 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:38,508 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:38,859 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:39,209 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:39,560 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:39,910 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:40,261 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:40,612 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:40,962 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:41,313 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:41,664 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:42,015 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:42,365 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:42,716 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:43,067 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:43,418 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:43,768 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:44,119 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:44,470 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:44,820 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:45,171 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:45,521 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:45,872 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:46,223 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:46,573 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:46,924 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:47,274 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:47,625 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:47,976 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:48,326 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:48,677 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:49,027 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:49,378 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:49,729 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:50,079 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:50,430 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:50,781 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:51,132 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:51,482 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:51,833 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:52,184 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:52,534 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:52,885 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:53,237 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:53,588 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:53,939 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:54,289 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:54,640 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:54,990 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:55,341 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:55,692 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:56,042 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:56,393 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:56,743 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:57,094 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:57,444 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:57,795 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:58,146 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:58,496 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:58,847 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:59,198 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:59,548 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:30:59,899 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:31:00,250 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:31:00,600 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:31:00,951 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:31:01,301 - watchfiles.main - INFO - 1 change detected
+2025-07-25 23:31:01,652 - watchfiles.main - INFO - 1 change detected
