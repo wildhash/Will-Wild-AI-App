@@ -1,0 +1,304 @@
+{
+  "providers": [
+    {
+      "id": "betterhelp",
+      "name": "BetterHelp",
+      "type": "online_therapy",
+      "description": "Online therapy platform connecting users with licensed, experienced, and accredited psychologists, marriage and family therapists, clinical social workers, and board-licensed professional counselors",
+      "website": "https://betterhelp.com",
+      "availability": "flexible scheduling, 24/7 messaging",
+      "cost": "$60-90 per week",
+      "insurance_accepted": ["limited insurance plans", "HSA/FSA eligible"],
+      "languages": ["English", "Spanish"],
+      "specialties": [
+        "anxiety",
+        "depression",
+        "relationships",
+        "trauma",
+        "grief",
+        "stress",
+        "self-esteem",
+        "family conflicts",
+        "LGBTQ+ issues"
+      ],
+      "therapy_types": ["CBT", "DBT", "mindfulness-based", "solution-focused"],
+      "crisis_capable": false,
+      "age_groups": ["adults", "teens"],
+      "rating": 4.2,
+      "verification_required": true,
+      "location": "online"
+    },
+    {
+      "id": "talkspace",
+      "name": "Talkspace",
+      "type": "online_therapy",
+      "description": "Online therapy platform offering text, audio, and video therapy sessions with licensed therapists",
+      "website": "https://talkspace.com",
+      "availability": "flexible scheduling",
+      "cost": "$69-109 per week",
+      "insurance_accepted": ["many major insurance plans"],
+      "languages": ["English"],
+      "specialties": [
+        "anxiety",
+        "depression",
+        "PTSD",
+        "bipolar disorder",
+        "eating disorders",
+        "addiction",
+        "relationships"
+      ],
+      "therapy_types": ["CBT", "DBT", "psychodynamic"],
+      "crisis_capable": false,
+      "age_groups": ["adults", "teens"],
+      "rating": 4.0,
+      "verification_required": true,
+      "location": "online"
+    },
+    {
+      "id": "psychology_today",
+      "name": "Psychology Today Therapist Directory",
+      "type": "provider_directory",
+      "description": "Comprehensive directory of mental health professionals including psychologists, therapists, counselors, and psychiatrists",
+      "website": "https://psychologytoday.com",
+      "availability": "search tool for local providers",
+      "cost": "varies by provider ($50-200+ per session)",
+      "insurance_accepted": ["varies by provider"],
+      "languages": ["varies by provider"],
+      "specialties": [
+        "all mental health specialties",
+        "anxiety",
+        "depression",
+        "trauma",
+        "relationships",
+        "addiction",
+        "eating disorders",
+        "ADHD",
+        "autism spectrum",
+        "grief"
+      ],
+      "therapy_types": ["all therapy modalities"],
+      "crisis_capable": false,
+      "age_groups": ["children", "teens", "adults", "seniors"],
+      "rating": 4.3,
+      "verification_required": false,
+      "location": "varies"
+    },
+    {
+      "id": "open_path",
+      "name": "Open Path Psychotherapy Collective",
+      "type": "affordable_therapy",
+      "description": "Nonprofit organization offering affordable in-person and online therapy sessions with licensed mental health professionals",
+      "website": "https://openpathcollective.org",
+      "availability": "varies by provider",
+      "cost": "$30-80 per session",
+      "insurance_accepted": ["varies by provider"],
+      "languages": ["varies by provider"],
+      "specialties": [
+        "anxiety",
+        "depression",
+        "trauma",
+        "relationships",
+        "LGBTQ+ issues",
+        "family therapy",
+        "grief"
+      ],
+      "therapy_types": ["varies by provider"],
+      "crisis_capable": false,
+      "age_groups": ["all ages"],
+      "rating": 4.1,
+      "verification_required": true,
+      "location": "in-person and online"
+    },
+    {
+      "id": "cerebral",
+      "name": "Cerebral",
+      "type": "online_therapy",
+      "description": "Online mental health platform offering therapy and medication management for anxiety, depression, and other conditions",
+      "website": "https://cerebral.com",
+      "availability": "flexible scheduling",
+      "cost": "$85-325 per month",
+      "insurance_accepted": ["many major insurance plans"],
+      "languages": ["English", "Spanish"],
+      "specialties": [
+        "anxiety",
+        "depression",
+        "ADHD",
+        "insomnia",
+        "bipolar disorder"
+      ],
+      "therapy_types": ["CBT", "DBT"],
+      "medication_management": true,
+      "crisis_capable": false,
+      "age_groups": ["adults"],
+      "rating": 3.8,
+      "verification_required": true,
+      "location": "online"
+    },
+    {
+      "id": "pride_counseling",
+      "name": "Pride Counseling",
+      "type": "online_therapy",
+      "description": "Online counseling platform specifically designed for the LGBTQ+ community, offering therapy with affirming therapists",
+      "website": "https://pridecounseling.com",
+      "availability": "flexible scheduling",
+      "cost": "$60-90 per week",
+      "insurance_accepted": ["limited insurance plans"],
+      "languages": ["English"],
+      "specialties": [
+        "LGBTQ+ issues",
+        "coming out",
+        "gender identity",
+        "sexual orientation",
+        "relationships",
+        "anxiety",
+        "depression"
+      ],
+      "therapy_types": ["affirmative therapy", "CBT", "mindfulness-based"],
+      "crisis_capable": false,
+      "age_groups": ["teens", "adults"],
+      "target_population": "LGBTQ+ individuals",
+      "rating": 4.4,
+      "verification_required": true,
+      "location": "online"
+    },
+    {
+      "id": "teen_counseling",
+      "name": "Teen Counseling",
+      "type": "online_therapy",
+      "description": "Online therapy platform specifically designed for teenagers, offering age-appropriate mental health support",
+      "website": "https://teencounseling.com",
+      "availability": "flexible scheduling",
+      "cost": "$60-90 per week",
+      "insurance_accepted": ["limited insurance plans"],
+      "languages": ["English"],
+      "specialties": [
+        "teen anxiety",
+        "teen depression",
+        "school stress",
+        "family conflicts",
+        "self-esteem",
+        "social issues",
+        "eating disorders"
+      ],
+      "therapy_types": ["teen-focused CBT", "family therapy"],
+      "crisis_capable": false,
+      "age_groups": ["teens (13-18)"],
+      "target_population": "teenagers",
+      "rating": 4.1,
+      "verification_required": true,
+      "parental_involvement": "varies",
+      "location": "online"
+    },
+    {
+      "id": "mdlive",
+      "name": "MDLIVE Therapy",
+      "type": "online_therapy",
+      "description": "Telehealth platform offering online therapy and psychiatry services with licensed mental health professionals",
+      "website": "https://mdlive.com",
+      "availability": "7 days a week",
+      "cost": "$108+ per session",
+      "insurance_accepted": ["many major insurance plans"],
+      "languages": ["English", "Spanish"],
+      "specialties": [
+        "anxiety",
+        "depression",
+        "PTSD",
+        "bipolar disorder",
+        "ADHD"
+      ],
+      "therapy_types": ["CBT", "psychodynamic"],
+      "medication_management": true,
+      "crisis_capable": false,
+      "age_groups": ["adults"],
+      "rating": 3.9,
+      "verification_required": true,
+      "location": "online"
+    }
+  ],
+  "provider_categories": {
+    "online_platforms": {
+      "description": "Online therapy platforms with licensed therapists",
+      "providers": ["betterhelp", "talkspace", "cerebral", "mdlive"]
+    },
+    "specialized_populations": {
+      "description": "Services for specific populations",
+      "providers": ["pride_counseling", "teen_counseling"]
+    },
+    "affordable_options": {
+      "description": "Lower-cost therapy options",
+      "providers": ["open_path"]
+    },
+    "directories": {
+      "description": "Tools to find local therapists",
+      "providers": ["psychology_today"]
+    }
+  },
+  "insurance_coverage": {
+    "major_plans_accepted": [
+      "Aetna",
+      "Blue Cross Blue Shield",
+      "Cigna",
+      "UnitedHealthcare",
+      "Kaiser Permanente",
+      "Humana"
+    ],
+    "alternative_payment": [
+      "HSA/FSA",
+      "sliding scale fees",
+      "payment plans",
+      "employee assistance programs"
+    ]
+  },
+  "therapy_types": {
+    "CBT": {
+      "name": "Cognitive Behavioral Therapy",
+      "description": "Evidence-based therapy focusing on changing negative thought patterns and behaviors"
+    },
+    "DBT": {
+      "name": "Dialectical Behavior Therapy",
+      "description": "Therapy combining CBT techniques with mindfulness and emotional regulation skills"
+    },
+    "psychodynamic": {
+      "name": "Psychodynamic Therapy",
+      "description": "Explores unconscious thoughts and past experiences affecting current behavior"
+    },
+    "mindfulness_based": {
+      "name": "Mindfulness-Based Therapy",
+      "description": "Incorporates mindfulness meditation and awareness practices"
+    },
+    "solution_focused": {
+      "name": "Solution-Focused Brief Therapy",
+      "description": "Goal-oriented therapy focusing on solutions rather than problems"
+    }
+  },
+  "search_criteria": {
+    "by_specialty": {
+      "anxiety": ["betterhelp", "talkspace", "psychology_today", "open_path", "cerebral"],
+      "depression": ["betterhelp", "talkspace", "psychology_today", "open_path", "cerebral"],
+      "trauma": ["betterhelp", "talkspace", "psychology_today", "open_path"],
+      "lgbtq_issues": ["pride_counseling", "betterhelp", "psychology_today", "open_path"],
+      "teen_issues": ["teen_counseling", "psychology_today"]
+    },
+    "by_cost_range": {
+      "under_50": ["open_path"],
+      "50_100": ["betterhelp", "talkspace", "pride_counseling", "teen_counseling"],
+      "100_plus": ["cerebral", "mdlive", "psychology_today"]
+    },
+    "by_availability": {
+      "24_7_messaging": ["betterhelp"],
+      "flexible_scheduling": ["betterhelp", "talkspace", "cerebral", "pride_counseling", "teen_counseling"],
+      "same_day": ["mdlive"]
+    }
+  },
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-01-15",
+    "total_providers": 8,
+    "online_providers": 7,
+    "directory_services": 1,
+    "specialized_services": 2,
+    "insurance_friendly": 5,
+    "description": "Mental health therapy providers and platforms for various needs and populations",
+    "usage_notes": "Verify provider availability, insurance coverage, and licensing in user's location. Consider user preferences for online vs in-person therapy."
+  }
+}

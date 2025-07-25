@@ -1,0 +1,202 @@
+{
+  "cbt_techniques": {
+    "thought_challenging": {
+      "name": "Thought Challenging",
+      "category": "cognitive_restructuring",
+      "description": "Help identify and challenge negative thought patterns and cognitive distortions",
+      "target_emotions": ["sad", "depressed", "hopeless", "anxious", "worried"],
+      "steps": [
+        "Identify the specific negative thought",
+        "Ask: What evidence supports this thought?",
+        "Ask: What evidence contradicts this thought?",
+        "Consider: What would you tell a friend in this situation?",
+        "Develop a more balanced, realistic thought"
+      ],
+      "example_questions": [
+        "What evidence do you have that supports this thought?",
+        "What evidence contradicts this thought?",
+        "Are you looking at this situation in black and white terms?",
+        "What would you tell a good friend who had this thought?",
+        "What's the most realistic way to look at this situation?"
+      ],
+      "prompts": [
+        "Let's examine this thought together. What evidence do you have that this is true?",
+        "I notice you're being quite hard on yourself. What would you say to a friend who told you this?",
+        "It sounds like you're seeing this situation as all-or-nothing. What might be a middle ground?"
+      ],
+      "duration_minutes": 10,
+      "difficulty": "beginner",
+      "effectiveness_rating": 4.5
+    },
+    "grounding_5_4_3_2_1": {
+      "name": "5-4-3-2-1 Grounding Technique",
+      "category": "mindfulness",
+      "description": "A sensory grounding technique to help manage anxiety and panic by focusing on the present moment",
+      "target_emotions": ["anxious", "panicked", "overwhelmed", "dissociated"],
+      "steps": [
+        "5 things you can see around you",
+        "4 things you can touch or feel",
+        "3 things you can hear",
+        "2 things you can smell",
+        "1 thing you can taste"
+      ],
+      "example_questions": [
+        "Can you name 5 things you can see right now?",
+        "What are 4 things you can touch or feel around you?",
+        "What sounds can you hear in this moment?",
+        "Are there any scents or smells you notice?",
+        "Can you taste anything right now?"
+      ],
+      "prompts": [
+        "Let's try a grounding exercise to help you feel more present. Can you look around and tell me 5 things you can see?",
+        "I want to help you connect with the present moment. Let's start by naming things you can see around you.",
+        "This technique can help when you're feeling overwhelmed. We'll go through your senses together."
+      ],
+      "duration_minutes": 5,
+      "difficulty": "beginner",
+      "effectiveness_rating": 4.3
+    },
+    "breathing_4_7_8": {
+      "name": "4-7-8 Breathing Exercise",
+      "category": "relaxation",
+      "description": "A structured breathing technique to promote relaxation and reduce anxiety",
+      "target_emotions": ["anxious", "stressed", "panicked", "agitated"],
+      "steps": [
+        "Exhale completely through your mouth",
+        "Close your mouth and inhale through your nose for 4 counts",
+        "Hold your breath for 7 counts",
+        "Exhale through your mouth for 8 counts",
+        "Repeat 3-4 times"
+      ],
+      "example_questions": [
+        "Are you comfortable trying a breathing exercise?",
+        "Can you find a comfortable position to sit or lie down?",
+        "How does your breathing feel right now?",
+        "Do you notice any changes in your body as we do this?"
+      ],
+      "prompts": [
+        "Let's try a breathing exercise that can help calm your nervous system. Are you ready?",
+        "I'd like to guide you through a breathing technique that many people find helpful for anxiety.",
+        "Breathing exercises can be very effective for managing stress. Would you like to try one together?"
+      ],
+      "duration_minutes": 3,
+      "difficulty": "beginner",
+      "effectiveness_rating": 4.0
+    },
+    "behavioral_activation": {
+      "name": "Behavioral Activation",
+      "category": "behavioral",
+      "description": "Scheduling pleasant and meaningful activities to combat depression and improve mood",
+      "target_emotions": ["depressed", "sad", "unmotivated", "hopeless"],
+      "steps": [
+        "Identify activities that used to bring you joy or satisfaction",
+        "Choose one small, manageable activity for today",
+        "Schedule a specific time to do this activity",
+        "Follow through even if you don't feel like it",
+        "Notice any changes in mood or energy after the activity"
+      ],
+      "example_questions": [
+        "What activities used to bring you joy or satisfaction?",
+        "What's one small thing you could do today that might help?",
+        "When was the last time you did something you enjoyed?",
+        "What would be a manageable first step?"
+      ],
+      "prompts": [
+        "When we're feeling low, it can help to engage in activities that used to bring us joy. What are some things you used to enjoy?",
+        "Sometimes action comes before motivation. What's one small thing you could commit to doing today?",
+        "Let's think about scheduling one pleasant activity for today, even if it's something small."
+      ],
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "effectiveness_rating": 4.2
+    },
+    "progressive_muscle_relaxation": {
+      "name": "Progressive Muscle Relaxation",
+      "category": "relaxation",
+      "description": "Systematically tensing and relaxing muscle groups to reduce physical tension and stress",
+      "target_emotions": ["anxious", "stressed", "tense", "agitated"],
+      "steps": [
+        "Find a comfortable position sitting or lying down",
+        "Start with your toes - tense for 5 seconds, then relax",
+        "Move up through each muscle group (legs, abdomen, arms, shoulders, face)",
+        "Notice the contrast between tension and relaxation",
+        "End with a few deep breaths and full-body relaxation"
+      ],
+      "example_questions": [
+        "Do you have a quiet place where you can relax?",
+        "Are you comfortable with tensing and relaxing your muscles?",
+        "Do you notice any areas where you hold tension?",
+        "How does your body feel right now?"
+      ],
+      "prompts": [
+        "Let's try a relaxation technique that can help release physical tension. Are you in a comfortable position?",
+        "This exercise involves tensing and relaxing different muscle groups. It can be very effective for stress.",
+        "Many people carry stress in their bodies. This technique can help you release that tension."
+      ],
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "effectiveness_rating": 4.1
+    },
+    "values_clarification": {
+      "name": "Values Clarification",
+      "category": "acceptance_commitment",
+      "description": "Identifying personal values to guide decision-making and find meaning",
+      "target_emotions": ["lost", "confused", "unmotivated", "hopeless"],
+      "steps": [
+        "Reflect on what matters most to you in life",
+        "Identify your core values (e.g., family, creativity, justice, growth)",
+        "Consider how your current situation aligns with these values",
+        "Think about small ways to honor your values today",
+        "Plan larger steps to live more in accordance with your values"
+      ],
+      "example_questions": [
+        "What matters most to you in life?",
+        "What values do you want to guide your decisions?",
+        "When have you felt most fulfilled or purposeful?",
+        "How can you honor your values in small ways today?"
+      ],
+      "prompts": [
+        "Sometimes when we're struggling, it helps to reconnect with what truly matters to us. What are your core values?",
+        "Let's explore what gives your life meaning and purpose. What do you value most?",
+        "Even in difficult times, we can take small steps that align with our values. What matters most to you?"
+      ],
+      "duration_minutes": 20,
+      "difficulty": "intermediate",
+      "effectiveness_rating": 4.4
+    }
+  },
+  "technique_matching": {
+    "anxious": ["grounding_5_4_3_2_1", "breathing_4_7_8", "progressive_muscle_relaxation"],
+    "depressed": ["behavioral_activation", "thought_challenging", "values_clarification"],
+    "overwhelmed": ["grounding_5_4_3_2_1", "breathing_4_7_8", "progressive_muscle_relaxation"],
+    "hopeless": ["values_clarification", "thought_challenging", "behavioral_activation"],
+    "panicked": ["breathing_4_7_8", "grounding_5_4_3_2_1"],
+    "sad": ["behavioral_activation", "thought_challenging"],
+    "stressed": ["progressive_muscle_relaxation", "breathing_4_7_8"],
+    "worried": ["thought_challenging", "grounding_5_4_3_2_1"],
+    "angry": ["breathing_4_7_8", "progressive_muscle_relaxation"],
+    "confused": ["values_clarification", "thought_challenging"]
+  },
+  "difficulty_levels": {
+    "beginner": {
+      "description": "Simple techniques that require minimal instruction",
+      "techniques": ["grounding_5_4_3_2_1", "breathing_4_7_8", "progressive_muscle_relaxation"]
+    },
+    "intermediate": {
+      "description": "Techniques requiring some practice and guidance",
+      "techniques": ["behavioral_activation", "values_clarification"]
+    },
+    "advanced": {
+      "description": "Complex techniques requiring significant practice",
+      "techniques": []
+    }
+  },
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-01-15",
+    "total_techniques": 6,
+    "evidence_based": true,
+    "description": "Evidence-based CBT and therapeutic techniques for mental health support",
+    "usage_notes": "These techniques should be introduced gradually and with proper guidance. Monitor user comfort and effectiveness."
+  }
+}

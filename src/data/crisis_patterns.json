@@ -1,0 +1,219 @@
+{
+  "crisis_patterns": {
+    "suicide_risk": {
+      "keywords": [
+        "suicide",
+        "kill myself",
+        "end my life",
+        "take my life",
+        "don't want to live",
+        "better off dead",
+        "suicide plan",
+        "end it all",
+        "can't go on",
+        "no reason to live",
+        "want to die",
+        "ready to die",
+        "going to die",
+        "planning to die"
+      ],
+      "severity": "critical",
+      "response_type": "immediate_intervention",
+      "requires_immediate_action": true,
+      "confidence_threshold": 0.9,
+      "description": "Direct suicidal ideation or intent"
+    },
+    "self_harm": {
+      "keywords": [
+        "cut myself",
+        "hurt myself",
+        "self harm",
+        "cutting",
+        "burning myself",
+        "punish myself",
+        "scratch myself",
+        "hit myself",
+        "harm myself",
+        "self injury",
+        "mutilate",
+        "self destruct"
+      ],
+      "severity": "high",
+      "response_type": "safety_planning",
+      "requires_immediate_action": false,
+      "confidence_threshold": 0.8,
+      "description": "Self-harm behaviors or intentions"
+    },
+    "substance_abuse": {
+      "keywords": [
+        "overdose",
+        "too many pills",
+        "drinking too much",
+        "can't stop using",
+        "substance problem",
+        "addicted",
+        "drugs and alcohol",
+        "using heavily",
+        "binge drinking",
+        "drug problem",
+        "alcohol problem",
+        "prescription abuse"
+      ],
+      "severity": "high",
+      "response_type": "resource_referral",
+      "requires_immediate_action": false,
+      "confidence_threshold": 0.7,
+      "description": "Substance abuse crisis or overdose risk"
+    },
+    "violence_risk": {
+      "keywords": [
+        "hurt someone",
+        "kill them",
+        "violent thoughts",
+        "can't control anger",
+        "want to hurt",
+        "rage",
+        "weapon",
+        "gun",
+        "knife",
+        "violent plan",
+        "harm others",
+        "attack",
+        "revenge"
+      ],
+      "severity": "critical",
+      "response_type": "immediate_intervention",
+      "requires_immediate_action": true,
+      "confidence_threshold": 0.9,
+      "description": "Risk of violence toward others"
+    },
+    "severe_depression": {
+      "keywords": [
+        "hopeless",
+        "nothing matters",
+        "can't go on",
+        "no point living",
+        "everything is dark",
+        "worthless",
+        "burden to everyone",
+        "life has no meaning",
+        "empty inside",
+        "numb",
+        "dead inside",
+        "pointless"
+      ],
+      "severity": "medium",
+      "response_type": "enhanced_support",
+      "requires_immediate_action": false,
+      "confidence_threshold": 0.6,
+      "description": "Severe depressive symptoms"
+    },
+    "panic_anxiety": {
+      "keywords": [
+        "panic attack",
+        "can't breathe",
+        "heart racing",
+        "going crazy",
+        "losing control",
+        "terrified",
+        "overwhelming fear",
+        "dizzy",
+        "chest pain",
+        "feel like dying",
+        "can't calm down",
+        "hyperventilating"
+      ],
+      "severity": "medium",
+      "response_type": "grounding_techniques",
+      "requires_immediate_action": false,
+      "confidence_threshold": 0.7,
+      "description": "Panic or severe anxiety symptoms"
+    },
+    "eating_disorder": {
+      "keywords": [
+        "not eating",
+        "starving myself",
+        "binge eating",
+        "purging",
+        "throwing up food",
+        "laxatives",
+        "hate my body",
+        "too fat",
+        "need to lose weight",
+        "restricting food",
+        "eating disorder"
+      ],
+      "severity": "medium",
+      "response_type": "resource_referral",
+      "requires_immediate_action": false,
+      "confidence_threshold": 0.6,
+      "description": "Eating disorder behaviors"
+    },
+    "child_safety": {
+      "keywords": [
+        "child abuse",
+        "hurting my child",
+        "abuse at home",
+        "unsafe for children",
+        "child in danger",
+        "neglecting",
+        "hitting child",
+        "child protective services"
+      ],
+      "severity": "critical",
+      "response_type": "immediate_intervention",
+      "requires_immediate_action": true,
+      "confidence_threshold": 0.8,
+      "description": "Child safety concerns"
+    }
+  },
+  "escalation_triggers": [
+    "tonight",
+    "today",
+    "right now",
+    "immediately",
+    "planning",
+    "decided",
+    "ready",
+    "going to",
+    "will",
+    "plan to"
+  ],
+  "de_escalation_phrases": [
+    "sometimes",
+    "maybe",
+    "thinking about",
+    "wondering",
+    "if",
+    "hypothetical",
+    "in a movie",
+    "friend told me",
+    "someone else"
+  ],
+  "false_positive_filters": [
+    "in a book",
+    "in a movie",
+    "on tv",
+    "video game",
+    "character",
+    "fictional",
+    "story",
+    "novel",
+    "not me",
+    "someone else",
+    "friend",
+    "relative",
+    "would never",
+    "don't want to",
+    "won't"
+  ],
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-01-15",
+    "total_patterns": 8,
+    "critical_patterns": 3,
+    "high_risk_patterns": 2,
+    "medium_risk_patterns": 3,
+    "description": "Crisis detection patterns for mental health support agent"
+  }
+}

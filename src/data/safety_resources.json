@@ -1,0 +1,214 @@
+{
+  "resources": [
+    {
+      "id": "988_lifeline",
+      "name": "988 Suicide & Crisis Lifeline",
+      "type": "crisis_hotline",
+      "description": "Free, confidential emotional support for people in suicidal distress or emotional crisis, 24 hours a day, 7 days a week",
+      "phone": "988",
+      "website": "https://988lifeline.org",
+      "text_option": "Text 'HELLO' to 741741",
+      "availability": "24/7",
+      "cost": "free",
+      "languages": ["English", "Spanish"],
+      "specialties": ["suicide prevention", "crisis intervention", "emotional support"],
+      "crisis_capable": true,
+      "national": true,
+      "rating": 4.8,
+      "emergency_priority": 1
+    },
+    {
+      "id": "crisis_text_line",
+      "name": "Crisis Text Line",
+      "type": "crisis_text",
+      "description": "Free, 24/7 crisis counseling via text message. Trained counselors help with depression, anxiety, eating disorders, abuse, and more",
+      "phone": "Text HOME to 741741",
+      "website": "https://crisistextline.org",
+      "availability": "24/7",
+      "cost": "free",
+      "languages": ["English", "Spanish"],
+      "specialties": ["crisis support", "depression", "anxiety", "eating disorders", "abuse"],
+      "crisis_capable": true,
+      "national": true,
+      "rating": 4.6,
+      "emergency_priority": 2
+    },
+    {
+      "id": "emergency_services",
+      "name": "Emergency Services (911)",
+      "type": "emergency",
+      "description": "Call 911 for immediate life-threatening emergencies, including active suicide attempts or when someone is in immediate physical danger",
+      "phone": "911",
+      "availability": "24/7",
+      "cost": "varies",
+      "languages": ["English", "interpreter services available"],
+      "specialties": ["medical emergencies", "immediate safety threats"],
+      "crisis_capable": true,
+      "national": true,
+      "emergency_priority": 0
+    },
+    {
+      "id": "nami_helpline",
+      "name": "NAMI HelpLine",
+      "type": "support_helpline",
+      "description": "Information, resource referrals and support for people living with mental health conditions and their families",
+      "phone": "1-800-950-6264",
+      "website": "https://nami.org/help",
+      "email": "info@nami.org",
+      "availability": "Monday-Friday 10am-6pm ET",
+      "cost": "free",
+      "languages": ["English"],
+      "specialties": ["general mental health", "family support", "referrals", "information"],
+      "crisis_capable": false,
+      "national": true,
+      "rating": 4.3
+    },
+    {
+      "id": "samhsa_helpline",
+      "name": "SAMHSA National Helpline",
+      "type": "treatment_referral",
+      "description": "Treatment referral and information service for individuals and families facing mental health and/or substance use disorders",
+      "phone": "1-800-662-4357",
+      "website": "https://samhsa.gov/find-help/national-helpline",
+      "availability": "24/7",
+      "cost": "free",
+      "languages": ["English", "Spanish"],
+      "specialties": ["substance abuse", "mental health treatment", "referrals"],
+      "crisis_capable": false,
+      "national": true,
+      "rating": 4.2
+    },
+    {
+      "id": "trevor_lifeline",
+      "name": "The Trevor Lifeline",
+      "type": "crisis_hotline",
+      "description": "Crisis intervention and suicide prevention services for LGBTQ+ young people under 25",
+      "phone": "1-866-488-7386",
+      "website": "https://thetrevorproject.org",
+      "text_option": "Text START to 678-678",
+      "availability": "24/7",
+      "cost": "free",
+      "languages": ["English"],
+      "specialties": ["LGBTQ+ youth", "suicide prevention", "crisis intervention"],
+      "crisis_capable": true,
+      "national": true,
+      "target_population": "LGBTQ+ youth under 25",
+      "rating": 4.7
+    },
+    {
+      "id": "national_domestic_violence",
+      "name": "National Domestic Violence Hotline",
+      "type": "crisis_hotline",
+      "description": "24/7 confidential support for anyone experiencing domestic violence, seeking resources or information, or questioning unhealthy aspects of their relationship",
+      "phone": "1-800-799-7233",
+      "website": "https://thehotline.org",
+      "text_option": "Text START to 88788",
+      "availability": "24/7",
+      "cost": "free",
+      "languages": ["English", "Spanish", "200+ languages via interpreter"],
+      "specialties": ["domestic violence", "relationship abuse", "safety planning"],
+      "crisis_capable": true,
+      "national": true,
+      "rating": 4.5
+    },
+    {
+      "id": "national_sexual_assault",
+      "name": "National Sexual Assault Hotline",
+      "type": "crisis_hotline",
+      "description": "Free, confidential support for survivors of sexual assault and their loved ones",
+      "phone": "1-800-656-4673",
+      "website": "https://rainn.org",
+      "availability": "24/7",
+      "cost": "free",
+      "languages": ["English", "Spanish"],
+      "specialties": ["sexual assault", "trauma support", "crisis counseling"],
+      "crisis_capable": true,
+      "national": true,
+      "rating": 4.6
+    },
+    {
+      "id": "trans_lifeline",
+      "name": "Trans Lifeline",
+      "type": "crisis_hotline",
+      "description": "Crisis hotline staffed by transgender people for transgender people",
+      "phone": "877-565-8860",
+      "website": "https://translifeline.org",
+      "availability": "Daily 7am-1am PT",
+      "cost": "free",
+      "languages": ["English"],
+      "specialties": ["transgender support", "crisis intervention"],
+      "crisis_capable": true,
+      "national": true,
+      "target_population": "transgender individuals",
+      "rating": 4.4
+    },
+    {
+      "id": "veterans_crisis_line",
+      "name": "Veterans Crisis Line",
+      "type": "crisis_hotline",
+      "description": "24/7 crisis support for veterans and their families and friends",
+      "phone": "988, Press 1",
+      "website": "https://veteranscrisisline.net",
+      "text_option": "Text 838255",
+      "availability": "24/7",
+      "cost": "free",
+      "languages": ["English"],
+      "specialties": ["veteran support", "military trauma", "PTSD"],
+      "crisis_capable": true,
+      "national": true,
+      "target_population": "veterans and military families",
+      "rating": 4.5
+    }
+  ],
+  "resource_categories": {
+    "immediate_crisis": {
+      "description": "Resources for immediate crisis intervention",
+      "resources": ["988_lifeline", "crisis_text_line", "emergency_services"]
+    },
+    "specialized_populations": {
+      "description": "Resources for specific populations",
+      "resources": ["trevor_lifeline", "trans_lifeline", "veterans_crisis_line"]
+    },
+    "abuse_trauma": {
+      "description": "Resources for abuse and trauma survivors",
+      "resources": ["national_domestic_violence", "national_sexual_assault"]
+    },
+    "general_support": {
+      "description": "General mental health information and support",
+      "resources": ["nami_helpline", "samhsa_helpline"]
+    }
+  },
+  "crisis_protocols": {
+    "suicide_risk": {
+      "primary_resources": ["988_lifeline", "crisis_text_line"],
+      "backup_resources": ["emergency_services"],
+      "message": "Your safety is the most important thing right now. Please reach out to these crisis resources immediately."
+    },
+    "self_harm": {
+      "primary_resources": ["988_lifeline", "crisis_text_line"],
+      "backup_resources": ["nami_helpline"],
+      "message": "I'm concerned about your safety. These resources can provide immediate support and guidance."
+    },
+    "domestic_violence": {
+      "primary_resources": ["national_domestic_violence"],
+      "backup_resources": ["988_lifeline", "emergency_services"],
+      "message": "Your safety is paramount. These specialized resources can help you develop a safety plan."
+    },
+    "substance_crisis": {
+      "primary_resources": ["samhsa_helpline", "988_lifeline"],
+      "backup_resources": ["emergency_services"],
+      "message": "Substance abuse crisis requires immediate attention. These resources specialize in addiction support."
+    }
+  },
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-01-15",
+    "total_resources": 10,
+    "crisis_resources": 8,
+    "national_coverage": true,
+    "24_7_resources": 7,
+    "free_resources": 10,
+    "description": "National mental health and crisis support resources",
+    "usage_notes": "Always prioritize user safety. Provide multiple options when possible. Verify resource availability and contact information regularly."
+  }
+}
