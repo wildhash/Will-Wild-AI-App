@@ -16,20 +16,58 @@ Welcome! This repository is your starting point for the **Agentic AI App Hackath
 
 ## 🚀 Getting Started
 
+### Backend Setup
+
 1. **Clone / Fork** this template.  Very Important. Fork Name MUST be the same name as the teamn name
 2. **Install dependencies**  
    ```bash
-   # Conda
-   conda env create -f environment.yml
-   conda activate agentic-hackathon
+   # Python dependencies
+   pip install -r requirements.txt
+   
+   # Start the FastAPI backend
+   cd src
+   python main.py
+   ```
 
-   #—or Docker—
-   docker build -t agentic-agent .
-   docker run --rm -it agentic-agent bash
+### Frontend Setup
+
+3. **Setup React frontend**
+   ```bash
+   # Install frontend dependencies
+   cd frontend
+   npm install
+   
+   # Start the development server
+   npm run dev
+   ```
+
+4. **Access the application**
+   - **Chat Interface:** http://localhost:5173
+   - **Backend API:** http://localhost:8000
+   - **API Documentation:** http://localhost:8000/docs
+
+> **Note:** Make sure both backend (port 8000) and frontend (port 5173) are running for full functionality.
 
 ## 📂 Folder Layout
 
 ![Folder Layout Diagram](images/folder-githb.png)
+
+### Project Structure
+
+```
+├── src/                    # Backend FastAPI application
+│   ├── api/               # API endpoints
+│   ├── agents/            # AI agent logic
+│   ├── models/            # Data models
+│   └── services/          # Core services
+├── frontend/              # React chat interface
+│   ├── src/               
+│   │   ├── components/    # React components
+│   │   └── ...           
+│   └── README.md          # Frontend-specific setup
+├── requirements.txt       # Python dependencies
+└── README.md             # This file
+```
 
 
 
