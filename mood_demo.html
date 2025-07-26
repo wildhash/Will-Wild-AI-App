@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crisis Support AI - Mood Tracking Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        .content {
+            display: flex;
+            min-height: 600px;
+        }
+        .chat-section {
+            flex: 1;
+            padding: 30px;
+            border-right: 1px solid #eee;
+        }
+        .mood-section {
+            flex: 1;
+            padding: 30px;
+            background: #f8f9ff;
+        }
+        .chat-messages {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #e0e4e7;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: #fafbfc;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .message.user {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+        }
+        .message.assistant {
+            background: #f3e5f5;
+            border-left: 4px solid #9c27b0;
+        }
+        .message-content {
+            margin-bottom: 5px;
+        }
+        .mood-indicator {
+            font-size: 0.9em;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .mood-emoji {
+            font-size: 1.2em;
+        }
+        .mood-confidence {
+            background: #e0e0e0;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
+        .input-section {
+            display: flex;
+            gap: 10px;
+        }
+        .input-section input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        .input-section button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+        .input-section button:hover {
+            background: #5a6fd8;
+        }
+        .mood-timeline {
+            margin-bottom: 25px;
+        }
+        .mood-timeline h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.3em;
+        }
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 4px solid #ccc;
+        }
+        .timeline-emoji {
+            font-size: 1.5em;
+        }
+        .timeline-info {
+            flex: 1;
+        }
+        .timeline-mood {
+            font-weight: bold;
+            text-transform: capitalize;
+        }
+        .timeline-keywords {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 3px;
+        }
+        .timeline-confidence {
+            font-size: 0.8em;
+            color: #999;
+        }
+        .mood-summary {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+        }
+        .mood-summary h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 1.3em;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        .mood-distribution {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .mood-badge {
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+        }
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+        .error {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎭 Crisis Support AI</h1>
+            <p>Real-time Mood Tracking & Analytics Demo</p>
+        </div>
+        
+        <div class="content">
+            <div class="chat-section">
+                <h2>💬 Chat Interface</h2>
+                <div id="chat-messages" class="chat-messages">
+                    <div class="message assistant">
+                        <div class="message-content">Hello! I'm your Crisis Support AI assistant with mood tracking capabilities. How are you feeling today?</div>
+                    </div>
+                </div>
+                
+                <div class="input-section">
+                    <input type="text" id="message-input" placeholder="Type your message here..." maxlength="500">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+                
+                <div style="margin-top: 15px; font-size: 0.9em; color: #666;">
+                    <strong>Try these example phrases to see mood detection:</strong><br>
+                    • "I'm so happy and excited about this!" (Happy)<br>
+                    • "I feel sad and down today" (Sad)<br>
+                    • "I'm really anxious about tomorrow" (Anxious)<br>
+                    • "This is so frustrating and annoying!" (Angry)<br>
+                    • "Let's discuss the weather" (Neutral)
+                </div>
+            </div>
+            
+            <div class="mood-section">
+                <div class="mood-timeline">
+                    <h3>📈 Mood Timeline</h3>
+                    <div id="mood-timeline-content">
+                        <div class="loading">Start chatting to see your mood timeline...</div>
+                    </div>
+                </div>
+                
+                <div class="mood-summary">
+                    <h3>📊 Session Analytics</h3>
+                    <div id="mood-summary-content">
+                        <div class="loading">No mood data available yet</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+        const USER_ID = 'demo_user_' + Math.random().toString(36).substr(2, 9);
+        
+        const moodEmojis = {
+            'happy': '😊',
+            'sad': '😢',
+            'anxious': '😰',
+            'angry': '😠',
+            'neutral': '😐'
+        };
+        
+        const moodColors = {
+            'happy': '#4caf50',
+            'sad': '#2196f3',
+            'anxious': '#ff9800',
+            'angry': '#f44336',
+            'neutral': '#9e9e9e'
+        };
+
+        function addMessageToChat(role, content, moodData = null) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${role}`;
+            
+            let messageHTML = `<div class="message-content">${content}</div>`;
+            
+            if (moodData && role === 'user') {
+                const emoji = moodEmojis[moodData.mood] || '🤔';
+                const confidence = Math.round(moodData.confidence * 100);
+                messageHTML += `
+                    <div class="mood-indicator">
+                        <span class="mood-emoji">${emoji}</span>
+                        <span>Mood: ${moodData.mood}</span>
+                        <span class="mood-confidence">${confidence}% confidence</span>
+                        ${moodData.keywords.length > 0 ? 
+                            `<span style="font-size: 0.8em; color: #888;">Keywords: ${moodData.keywords.join(', ')}</span>` : 
+                            ''
+                        }
+                    </div>
+                `;
+            }
+            
+            messageDiv.innerHTML = messageHTML;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('message-input');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message to chat immediately
+            addMessageToChat('user', message);
+            input.value = '';
+            
+            try {
+                // Send message to API
+                const response = await fetch(`${API_BASE}/api/chat`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_id: USER_ID,
+                        message: message
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Add assistant response
+                    addMessageToChat('assistant', data.response);
+                    
+                    // Update mood data
+                    await updateMoodData();
+                } else {
+                    throw new Error(data.detail || 'Failed to send message');
+                }
+            } catch (error) {
+                console.error('Error sending message:', error);
+                addMessageToChat('assistant', 'Sorry, I encountered an error. Please try again.');
+            }
+        }
+
+        async function updateMoodData() {
+            try {
+                const response = await fetch(`${API_BASE}/api/mood/${USER_ID}`);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    updateMoodTimeline(data.mood_timeline);
+                    updateMoodSummary(data.session_mood_summary);
+                } else {
+                    console.error('Failed to fetch mood data:', data);
+                }
+            } catch (error) {
+                console.error('Error fetching mood data:', error);
+            }
+        }
+
+        function updateMoodTimeline(timeline) {
+            const timelineContent = document.getElementById('mood-timeline-content');
+            
+            if (timeline.length === 0) {
+                timelineContent.innerHTML = '<div class="loading">No mood data available yet</div>';
+                return;
+            }
+            
+            const timelineHTML = timeline.map((mood, index) => {
+                const emoji = moodEmojis[mood.mood] || '🤔';
+                const color = moodColors[mood.mood] || '#9e9e9e';
+                const time = new Date(mood.timestamp).toLocaleTimeString();
+                const confidence = Math.round(mood.confidence * 100);
+                
+                return `
+                    <div class="timeline-item" style="border-left-color: ${color};">
+                        <div class="timeline-emoji">${emoji}</div>
+                        <div class="timeline-info">
+                            <div class="timeline-mood">${mood.mood}</div>
+                            <div class="timeline-keywords">Keywords: ${mood.keywords.join(', ') || 'None'}</div>
+                        </div>
+                        <div class="timeline-confidence">${confidence}%</div>
+                    </div>
+                `;
+            }).join('');
+            
+            timelineContent.innerHTML = timelineHTML;
+        }
+
+        function updateMoodSummary(summary) {
+            const summaryContent = document.getElementById('mood-summary-content');
+            
+            if (!summary || Object.keys(summary).length === 0) {
+                summaryContent.innerHTML = '<div class="loading">No summary data available yet</div>';
+                return;
+            }
+            
+            const distributionBadges = Object.entries(summary.mood_distribution || {})
+                .map(([mood, percentage]) => {
+                    const emoji = moodEmojis[mood] || '🤔';
+                    const percent = Math.round(percentage * 100);
+                    return `<span class="mood-badge">${emoji} ${mood}: ${percent}%</span>`;
+                }).join('');
+            
+            const summaryHTML = `
+                <div class="summary-item">
+                    <span><strong>Dominant Mood:</strong></span>
+                    <span>${moodEmojis[summary.dominant_mood] || '🤔'} ${summary.dominant_mood || 'Unknown'}</span>
+                </div>
+                <div class="summary-item">
+                    <span><strong>Mood Changes:</strong></span>
+                    <span>${summary.mood_changes || 0}</span>
+                </div>
+                <div class="summary-item">
+                    <span><strong>Average Confidence:</strong></span>
+                    <span>${Math.round((summary.average_confidence || 0) * 100)}%</span>
+                </div>
+                <div>
+                    <strong>Mood Distribution:</strong>
+                    <div class="mood-distribution">
+                        ${distributionBadges}
+                    </div>
+                </div>
+            `;
+            
+            summaryContent.innerHTML = summaryHTML;
+        }
+
+        // Handle Enter key in input
+        document.getElementById('message-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Initial load
+        console.log('Crisis Support AI - Mood Tracking Demo loaded');
+        console.log('User ID:', USER_ID);
+    </script>
+</body>
+</html>
