@@ -13,6 +13,7 @@ class Message(BaseModel):
 class ConversationContext(BaseModel):
     """Represents the context of a conversation with a user."""
     user_id: str
+    session_id: Optional[str] = None
     messages: List[Message] = []
     session_start_time: datetime = Field(default_factory=datetime.now)
     risk_level: str = "low"  # low, medium, high, critical
@@ -26,6 +27,7 @@ class ChatRequest(BaseModel):
     """Request model for chat endpoint."""
     user_id: str
     message: str
+    session_id: Optional[str] = None
 
 
 class ChatResponse(BaseModel):
@@ -33,3 +35,18 @@ class ChatResponse(BaseModel):
     response: str
     risk_level: str = "low"
     session_id: Optional[str] = None
+
+
+class SessionCreateRequest(BaseModel):
+    """Request model for creating a new session."""
+    user_id: str
+
+
+class SessionResponse(BaseModel):
+    """Response model for session endpoints."""
+    session_id: str
+    user_id: str
+    created_at: str
+    message_count: int
+    risk_level: str
+    messages: List[dict] = []

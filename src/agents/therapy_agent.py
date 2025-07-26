@@ -24,6 +24,103 @@ class TherapyAgent:
         
         logger.info("TherapyAgent initialized with all services")
     
+    def process_session_conversation(self, session_id: str, user_id: str, user_message: str) -> Dict[str, Any]:
+        """
+        Process a conversation turn with session-based context.
+        
+        Args:
+            session_id: Unique session identifier
+            user_id: Unique user identifier
+            user_message: The user's input message
+            
+        Returns:
+            Dictionary containing response, risk level, and session info
+        """
+        try:
+            # Get session context
+            context = self.memory_service.get_session_context(session_id)
+            
+            if not context:
+                # Create error response for missing session
+                logger.error(f"Session {session_id} not found")
+                return {
+                    "response": "I'm sorry, but I couldn't find your conversation session. Please start a new session.",
+                    "risk_level": "unknown",
+                    "session_id": session_id,
+                    "error": "session_not_found"
+                }
+            
+            # Verify user owns this session
+            if context.user_id != user_id:
+                logger.error(f"User {user_id} attempted to access session {session_id} owned by {context.user_id}")
+                return {
+                    "response": "I'm sorry, but you don't have access to this conversation session.",
+                    "risk_level": "unknown",
+                    "session_id": session_id,
+                    "error": "unauthorized_session_access"
+                }
+            
+            # Add user message to context
+            context.add_message("user", user_message)
+            
+            # Assess risk level
+            risk_level = self.safety_service.assess_risk_level(user_message)
+            
+            # Log crisis event if needed
+            if risk_level != RiskLevel.LOW:
+                self.safety_service.log_crisis_event(user_id, user_message, risk_level)
+                
+                # Notify crisis team for high-risk situations
+                if risk_level in [RiskLevel.CRITICAL, RiskLevel.HIGH]:
+                    self.safety_service.notify_crisis_team(user_id, risk_level)
+            
+            # Update context risk level
+            context.risk_level = risk_level.value
+            
+            # Generate response using Gemini
+            conversation_history = self._build_conversation_prompt(context)
+            response = self.gemini_service.generate_response(
+                user_message, 
+                context=conversation_history
+            )
+            
+            # Add safety resources if high risk
+            if risk_level in [RiskLevel.CRITICAL, RiskLevel.HIGH]:
+                protocol = self.safety_service.get_escalation_protocol(risk_level)
+                response += f"\n\n🆘 **Immediate Resources Available:**\n"
+                response += f"• {protocol['hotline']}\n"
+                response += f"• {protocol['immediate_action']}"
+            
+            # Add assistant response to context
+            context.add_message("assistant", response)
+            
+            # Update session in memory
+            self.memory_service.update_session_context(session_id, context)
+            
+            logger.info(f"Processed session conversation: {session_id}, risk level: {risk_level.value}")
+            
+            return {
+                "response": response,
+                "risk_level": risk_level.value,
+                "session_id": session_id,
+                "message_count": len(context.messages)
+            }
+            
+        except Exception as e:
+            logger.error(f"Error processing session conversation {session_id}: {str(e)}")
+            
+            # Return safe fallback response
+            fallback_response = ("I'm experiencing a technical issue right now. "
+                               "If this is an emergency, please call 988 (Suicide & Crisis Lifeline) "
+                               "or 911 immediately. I'll try to help you again in a moment.")
+            
+            return {
+                "response": fallback_response,
+                "risk_level": "unknown",
+                "session_id": session_id,
+                "error": "processing_error"
+            }
+    
     def process_conversation(self, user_id: str, user_message: str) -> Dict[str, Any]:
         """
         Process a conversation turn with safety assessment and response generation.

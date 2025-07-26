@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crisis Support AI - Session Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .session-info {
+            background: #e8f4fd;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            color: #666;
+        }
+        .chat-container {
+            height: 400px;
+            overflow-y: auto;
+            padding: 20px;
+            background: #fafafa;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+        .user-message {
+            background: #007bff;
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+        .assistant-message {
+            background: white;
+            border: 1px solid #ddd;
+            margin-right: auto;
+        }
+        .input-area {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #ddd;
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+        #messageInput {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .status {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .resources-section {
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            background: #f8f9fa;
+        }
+        .resource-group {
+            margin-bottom: 15px;
+        }
+        .resource-item {
+            background: white;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+        }
+        .risk-indicator {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .risk-low { background: #d4edda; color: #155724; }
+        .risk-medium { background: #fff3cd; color: #856404; }
+        .risk-high { background: #f8d7da; color: #721c24; }
+        .risk-critical { background: #f5c6cb; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Crisis Support AI</h1>
+            <p>Session Persistence Demo</p>
+        </div>
+        
+        <div class="session-info">
+            <div>
+                <strong>Session ID:</strong> <span id="sessionId">Not connected</span> | 
+                <strong>User ID:</strong> <span id="userId"></span> | 
+                <strong>Messages:</strong> <span id="messageCount">0</span> |
+                <strong>Risk Level:</strong> <span id="riskLevel" class="risk-indicator risk-low">LOW</span>
+            </div>
+        </div>
+        
+        <div id="statusArea"></div>
+        
+        <div class="input-area">
+            <div class="controls">
+                <button onclick="createNewSession()">New Session</button>
+                <button onclick="loadSession()">Load Session</button>
+                <button onclick="clearChat()">Clear Chat</button>
+                <button onclick="loadResources()">Get Resources</button>
+            </div>
+            
+            <div class="input-group">
+                <input type="text" id="messageInput" placeholder="Type your message here..." onkeydown="handleKeyPress(event)">
+                <button onclick="sendMessage()" id="sendButton">Send</button>
+            </div>
+        </div>
+        
+        <div class="chat-container" id="chatContainer">
+            <div class="message assistant-message">
+                <strong>AI Assistant:</strong> Welcome! I'm here to provide support. Click "New Session" to start a conversation, or "Load Session" to restore a previous conversation.
+            </div>
+        </div>
+        
+        <div class="resources-section" id="resourcesSection" style="display: none;">
+            <h3>Mental Health Resources</h3>
+            <div id="resourcesContent"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000/api';
+        let currentSessionId = null;
+        let currentUserId = 'demo_user_' + Math.random().toString(36).substr(2, 9);
+        
+        // Initialize with user ID
+        document.getElementById('userId').textContent = currentUserId;
+        
+        // Load session from localStorage on page load
+        window.onload = function() {
+            const savedSessionId = localStorage.getItem('sessionId');
+            const savedUserId = localStorage.getItem('userId');
+            
+            if (savedUserId) {
+                currentUserId = savedUserId;
+                document.getElementById('userId').textContent = currentUserId;
+            }
+            
+            if (savedSessionId) {
+                loadSessionById(savedSessionId);
+            }
+        };
+        
+        function showStatus(message, type = 'success') {
+            const statusArea = document.getElementById('statusArea');
+            statusArea.innerHTML = `<div class="status ${type}">${message}</div>`;
+            setTimeout(() => {
+                statusArea.innerHTML = '';
+            }, 5000);
+        }
+        
+        async function createNewSession() {
+            try {
+                const response = await fetch(`${API_BASE}/sessions`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_id: currentUserId
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                currentSessionId = data.session_id;
+                
+                // Save to localStorage
+                localStorage.setItem('sessionId', currentSessionId);
+                localStorage.setItem('userId', currentUserId);
+                
+                updateSessionInfo(data);
+                clearChatDisplay();
+                showStatus(`New session created: ${currentSessionId}`);
+                
+            } catch (error) {
+                console.error('Error creating session:', error);
+                showStatus('Failed to create new session: ' + error.message, 'error');
+            }
+        }
+        
+        async function loadSession() {
+            const sessionId = prompt('Enter session ID to load:');
+            if (sessionId) {
+                await loadSessionById(sessionId);
+            }
+        }
+        
+        async function loadSessionById(sessionId) {
+            try {
+                const response = await fetch(`${API_BASE}/sessions/${sessionId}`);
+                
+                if (!response.ok) {
+                    throw new Error(`Session not found or expired`);
+                }
+                
+                const data = await response.json();
+                currentSessionId = sessionId;
+                
+                // Save to localStorage
+                localStorage.setItem('sessionId', currentSessionId);
+                localStorage.setItem('userId', data.user_id);
+                
+                currentUserId = data.user_id;
+                document.getElementById('userId').textContent = currentUserId;
+                
+                updateSessionInfo(data);
+                displayChatHistory(data.messages);
+                showStatus(`Session loaded: ${sessionId}`);
+                
+            } catch (error) {
+                console.error('Error loading session:', error);
+                showStatus('Failed to load session: ' + error.message, 'error');
+            }
+        }
+        
+        function updateSessionInfo(sessionData) {
+            document.getElementById('sessionId').textContent = sessionData.session_id;
+            document.getElementById('messageCount').textContent = sessionData.message_count;
+            
+            const riskElement = document.getElementById('riskLevel');
+            riskElement.textContent = sessionData.risk_level.toUpperCase();
+            riskElement.className = `risk-indicator risk-${sessionData.risk_level}`;
+        }
+        
+        function displayChatHistory(messages) {
+            const chatContainer = document.getElementById('chatContainer');
+            chatContainer.innerHTML = '';
+            
+            messages.forEach(message => {
+                addMessageToChat(message.role, message.content, false);
+            });
+            
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+        
+        function clearChatDisplay() {
+            const chatContainer = document.getElementById('chatContainer');
+            chatContainer.innerHTML = '';
+        }
+        
+        function clearChat() {
+            if (currentSessionId) {
+                if (confirm('Are you sure you want to clear this session?')) {
+                    clearChatDisplay();
+                    currentSessionId = null;
+                    localStorage.removeItem('sessionId');
+                    document.getElementById('sessionId').textContent = 'Not connected';
+                    document.getElementById('messageCount').textContent = '0';
+                    showStatus('Chat cleared');
+                }
+            }
+        }
+        
+        async function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value.trim();
+            
+            if (!message) return;
+            
+            if (!currentSessionId) {
+                showStatus('Please create or load a session first', 'error');
+                return;
+            }
+            
+            // Disable send button
+            const sendButton = document.getElementById('sendButton');
+            sendButton.disabled = true;
+            sendButton.textContent = 'Sending...';
+            
+            // Add user message to chat
+            addMessageToChat('user', message);
+            messageInput.value = '';
+            
+            try {
+                const response = await fetch(`${API_BASE}/chat`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_id: currentUserId,
+                        message: message,
+                        session_id: currentSessionId
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Add assistant response to chat
+                addMessageToChat('assistant', data.response);
+                
+                // Update risk level indicator
+                const riskElement = document.getElementById('riskLevel');
+                riskElement.textContent = data.risk_level.toUpperCase();
+                riskElement.className = `risk-indicator risk-${data.risk_level}`;
+                
+                // Update message count
+                const currentCount = parseInt(document.getElementById('messageCount').textContent);
+                document.getElementById('messageCount').textContent = currentCount + 2;
+                
+            } catch (error) {
+                console.error('Error sending message:', error);
+                showStatus('Failed to send message: ' + error.message, 'error');
+                addMessageToChat('assistant', 'Sorry, I encountered an error. Please try again.');
+            } finally {
+                // Re-enable send button
+                sendButton.disabled = false;
+                sendButton.textContent = 'Send';
+            }
+        }
+        
+        function addMessageToChat(role, content, scroll = true) {
+            const chatContainer = document.getElementById('chatContainer');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${role}-message`;
+            
+            const roleLabel = role === 'user' ? 'You' : 'AI Assistant';
+            messageDiv.innerHTML = `<strong>${roleLabel}:</strong> ${content}`;
+            
+            chatContainer.appendChild(messageDiv);
+            
+            if (scroll) {
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+        }
+        
+        async function loadResources() {
+            try {
+                const url = currentSessionId ? 
+                    `${API_BASE}/resources?session_id=${currentSessionId}` : 
+                    `${API_BASE}/resources`;
+                
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                displayResources(data);
+                
+            } catch (error) {
+                console.error('Error loading resources:', error);
+                showStatus('Failed to load resources: ' + error.message, 'error');
+            }
+        }
+        
+        function displayResources(resources) {
+            const resourcesSection = document.getElementById('resourcesSection');
+            const resourcesContent = document.getElementById('resourcesContent');
+            
+            resourcesContent.innerHTML = '';
+            
+            // Display personalized message if available
+            if (resources.personalized) {
+                const personalizedDiv = document.createElement('div');
+                personalizedDiv.className = 'resource-group';
+                personalizedDiv.innerHTML = `
+                    <h4 style="color: ${resources.personalized.priority === 'high' ? '#721c24' : '#856404'};">
+                        ${resources.personalized.title}
+                    </h4>
+                    <p>${resources.personalized.message}</p>
+                `;
+                resourcesContent.appendChild(personalizedDiv);
+            }
+            
+            // Display emergency resources
+            if (resources.emergency) {
+                const emergencyDiv = document.createElement('div');
+                emergencyDiv.className = 'resource-group';
+                emergencyDiv.innerHTML = `<h4 style="color: #721c24;">${resources.emergency.title}</h4>`;
+                
+                resources.emergency.items.forEach(item => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'resource-item';
+                    itemDiv.innerHTML = `
+                        <strong>${item.name}</strong><br>
+                        Contact: ${item.contact}<br>
+                        Available: ${item.available}
+                        ${item.description ? `<br><em>${item.description}</em>` : ''}
+                    `;
+                    emergencyDiv.appendChild(itemDiv);
+                });
+                
+                resourcesContent.appendChild(emergencyDiv);
+            }
+            
+            // Display support resources
+            if (resources.support) {
+                const supportDiv = document.createElement('div');
+                supportDiv.className = 'resource-group';
+                supportDiv.innerHTML = `<h4>${resources.support.title}</h4>`;
+                
+                resources.support.items.forEach(item => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'resource-item';
+                    itemDiv.innerHTML = `
+                        <strong>${item.name}</strong><br>
+                        Contact: ${item.contact}<br>
+                        Available: ${item.available}
+                        ${item.description ? `<br><em>${item.description}</em>` : ''}
+                    `;
+                    supportDiv.appendChild(itemDiv);
+                });
+                
+                resourcesContent.appendChild(supportDiv);
+            }
+            
+            resourcesSection.style.display = 'block';
+            showStatus('Resources loaded successfully');
+        }
+        
+        function handleKeyPress(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+        }
+    </script>
+</body>
+</html>
