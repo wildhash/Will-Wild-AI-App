@@ -115,3 +115,12 @@ dmypy.json
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Application-specific
+crisis_support_agent.log
+*.tmp
+tmp/
+temp/
+.pytest_cache/
+.coverage
+htmlcov/
