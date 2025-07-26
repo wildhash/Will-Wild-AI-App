@@ -109,7 +109,7 @@ class SafetyService:
         protective_factors = []
         
         # Basic crisis detection
-        if any(word in message_lower for word in ["kill myself", "suicide", "end it all"]):
+        if any(word in message_lower for word in ["kill myself", "suicide", "end it all", "end my life", "have a plan"]):
             risk_factors.append("suicide_ideation")
             level = SafetyLevel.IMMINENT
             confidence = 0.9
