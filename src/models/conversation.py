@@ -33,3 +33,8 @@ class ChatResponse(BaseModel):
     response: str
     risk_level: str = "low"
     session_id: Optional[str] = None
+
+
+class ResourceRequest(BaseModel):
+    """Request model for resources endpoint."""
+    user_id: str

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crisis Support AI Agent - Mental Health Chat & Resources</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🤝 Crisis Support AI Agent</h1>
+            <p>Safe, confidential mental health support with personalized resources</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Chat Interface -->
+            <div class="chat-section">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <h2>💬 Chat Support</h2>
+                        <div class="user-info">
+                            <label for="userId">Your ID:</label>
+                            <input type="text" id="userId" placeholder="Enter your user ID" value="demo_user">
+                        </div>
+                    </div>
+                    
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message system-message">
+                            <div class="message-content">
+                                <p>👋 Welcome! I'm here to provide support and help you find mental health resources. 
+                                   How are you feeling today?</p>
+                                <small>System • Just now</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-section">
+                        <div class="input-container">
+                            <textarea 
+                                id="messageInput" 
+                                placeholder="Share what's on your mind... Your message is confidential."
+                                rows="3"
+                            ></textarea>
+                            <button id="sendButton" class="send-btn">Send</button>
+                        </div>
+                        <div class="chat-actions">
+                            <button id="showResourcesBtn" class="resources-btn">🔍 Show Resources</button>
+                            <button id="clearChatBtn" class="clear-btn">🗑️ Clear Chat</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resources Panel -->
+            <div class="resources-section" id="resourcesSection">
+                <div class="resources-container">
+                    <div class="resources-header">
+                        <h2>📚 Recommended Resources</h2>
+                        <button id="closeResourcesBtn" class="close-btn">✕</button>
+                    </div>
+                    
+                    <div class="resources-content" id="resourcesContent">
+                        <div class="loading">
+                            <p>🔄 Finding personalized resources for you...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Banner -->
+        <div class="emergency-banner" id="emergencyBanner" style="display: none;">
+            <div class="emergency-content">
+                <h3>🆘 Immediate Help Available</h3>
+                <p>If you're in crisis, please reach out now:</p>
+                <div class="emergency-contacts">
+                    <a href="tel:988" class="emergency-link">📞 Call 988 - Suicide & Crisis Lifeline</a>
+                    <a href="sms:741741" class="emergency-link">💬 Text HOME to 741741 - Crisis Text Line</a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>
+                <strong>Demo Status:</strong> This is a hackathon MVP demonstration. 
+                For real emergencies, always call 988 or 911.
+            </p>
+            <p>
+                <strong>Privacy:</strong> This demo stores conversation data temporarily for resource matching. 
+                Production version would include full privacy protections.
+            </p>
+        </footer>
+    </div>
+
+    <!-- Modal for Resource Details (TODO: Future enhancement) -->
+    <div class="modal" id="resourceModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Resource Details</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Resource details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

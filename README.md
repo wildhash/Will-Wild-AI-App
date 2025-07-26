@@ -6,12 +6,66 @@ Welcome! This repository is your starting point for the **Agentic AI App Hackath
 - An environment spec (`environment.yml` or `Dockerfile`)  
 - Documentation placeholders to explain your design and demo
 
-## 📋 Submission Checklist
+## 🤝 Crisis Support AI Agent - MVP Resource Matching Engine
 
-- [ ] All code in `src/` runs without errors  
-- [ ] `ARCHITECTURE.md` contains a clear diagram sketch and explanation  
-- [ ] `EXPLANATION.md` covers planning, tool use, memory, and limitations  
-- [ ] `DEMO.md` links to a 3–5 min video with timestamped highlights  
+This project implements an **MVP Resource Matching Engine** that provides personalized mental health resource recommendations based on conversation context, mood analysis, and risk assessment. Built for hackathon demo impact with clear extensibility for production deployment.
+
+### ✨ Key Features
+
+- **💬 Contextual Chat Support**: AI-powered mental health conversations with crisis detection
+- **🔍 Smart Resource Matching**: Personalized recommendations based on conversation analysis
+- **⚡ Real-time Risk Assessment**: Automatic detection of crisis situations with appropriate escalation
+- **🎯 Keyword-Based Matching**: MVP algorithm matching resources to user concerns (anxiety, depression, etc.)
+- **📱 Mobile-Friendly UI**: Clean, accessible interface optimized for mental health support
+
+### 🚀 Quick Start
+
+1. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Start the Server**
+   ```bash
+   cd src
+   python main.py
+   ```
+
+3. **Access the Application**
+   - **Frontend**: http://localhost:8000/static/index.html
+   - **API Documentation**: http://localhost:8000/docs
+   - **Health Check**: http://localhost:8000/api/health
+
+### 🎮 Demo Usage
+
+1. **Start a Conversation**:
+   - Enter a user ID (or use default "demo_user")
+   - Type your message about how you're feeling
+   - Click "Send" to get AI support response
+
+2. **View Personalized Resources**:
+   - Click "🔍 Show Resources" button
+   - View contextually matched mental health resources
+   - Resources are personalized based on your conversation keywords and risk level
+
+3. **Interactive Resources**:
+   - Click any resource to visit their website
+   - Resources include crisis hotlines, therapy platforms, educational content
+   - Resource matching improves with more conversation context
+
+### 🛠 API Endpoints
+
+- `POST /api/chat` - Send messages and receive AI responses
+- `POST /api/resources` - Get personalized resource recommendations
+- `GET /api/health` - Check system status
+- `GET /api/conversation/{user_id}/summary` - Get conversation analytics
+
+### 📋 Submission Checklist
+
+- [x] All code in `src/` runs without errors  
+- [x] `ARCHITECTURE.md` contains a clear diagram sketch and explanation  
+- [x] `EXPLANATION.md` covers planning, tool use, memory, and limitations  
+- [x] `DEMO.md` links to a 3–5 min video with timestamped highlights  
 
 
 ## 🚀 Getting Started

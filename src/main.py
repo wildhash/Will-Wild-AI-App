@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 # Add src to Python path for imports
 sys.path.append(str(Path(__file__).parent))
@@ -42,6 +43,14 @@ app.add_middleware(
 # Include routers
 app.include_router(chat_router)
 
+# Mount static files for frontend
+static_path = Path(__file__).parent.parent / "static"
+if static_path.exists():
+    app.mount("/static", StaticFiles(directory=str(static_path)), name="static")
+    logger.info(f"Static files mounted from: {static_path}")
+else:
+    logger.warning(f"Static directory not found: {static_path}")
+
 @app.get("/")
 async def root():
     """Root endpoint with basic API information."""
@@ -51,8 +60,10 @@ async def root():
         "status": "active",
         "endpoints": {
             "chat": "/api/chat",
+            "resources": "/api/resources", 
             "health": "/api/health",
-            "docs": "/docs"
+            "docs": "/docs",
+            "frontend": "/static/index.html"
         }
     }
 
