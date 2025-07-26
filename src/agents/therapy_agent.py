@@ -26,21 +26,21 @@ class TherapyAgent:
     
     def process_conversation(self, user_id: str, user_message: str) -> Dict[str, Any]:
         """
-        Process a conversation turn with safety assessment and response generation.
+        Process a conversation turn with safety assessment, mood analysis, and response generation.
         
         Args:
             user_id: Unique identifier for the user
             user_message: The user's input message
             
         Returns:
-            Dictionary containing response, risk level, and session info
+            Dictionary containing response, risk level, mood data, and session info
         """
         try:
             # Get or create conversation context
             context = self.memory_service.get_conversation_context(user_id)
             
-            # Add user message to context
-            context.add_message("user", user_message)
+            # Add user message with mood analysis
+            mood_data = self.memory_service.add_user_message_with_mood(user_id, user_message)
             
             # Assess risk level
             risk_level = self.safety_service.assess_risk_level(user_message)
@@ -71,18 +71,24 @@ class TherapyAgent:
                 response += f"• {protocol['immediate_action']}"
             
             # Add assistant response to context
-            context.add_message("assistant", response)
+            self.memory_service.add_assistant_message(user_id, response)
             
             # Update conversation in memory
             self.memory_service.update_conversation_context(user_id, context)
             
-            logger.info(f"Processed conversation for user {user_id}, risk level: {risk_level.value}")
+            logger.info(f"Processed conversation for user {user_id}, "
+                       f"risk level: {risk_level.value}, mood: {mood_data.mood}")
             
             return {
                 "response": response,
                 "risk_level": risk_level.value,
                 "session_id": context.user_id,
-                "message_count": len(context.messages)
+                "message_count": len(context.messages),
+                "mood_data": {
+                    "mood": mood_data.mood,
+                    "confidence": mood_data.confidence,
+                    "keywords": mood_data.keywords
+                }
             }
             
         except Exception as e:

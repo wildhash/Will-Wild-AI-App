@@ -1,7 +1,7 @@
 import logging
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.responses import JSONResponse
-from models.conversation import ChatRequest, ChatResponse
+from models.conversation import ChatRequest, ChatResponse, MoodTimelineResponse
 from agents.therapy_agent import TherapyAgent
 from services.memory_service import MemoryService
 from services.safety_service import SafetyService
@@ -160,3 +160,49 @@ async def end_conversation(
     except Exception as e:
         logger.error(f"Error ending conversation: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to end conversation")
+
+
+@router.get("/mood/{user_id}", response_model=MoodTimelineResponse)
+async def get_mood_timeline(
+    user_id: str,
+    agent: TherapyAgent = Depends(get_therapy_agent)
+):
+    """
+    Get mood timeline and analytics for a user's session.
+    
+    Args:
+        user_id: The user ID to get mood timeline for
+        
+    Returns:
+        MoodTimelineResponse with mood data and session summary
+    """
+    try:
+        if not user_id or not user_id.strip():
+            raise HTTPException(status_code=400, detail="user_id is required")
+        
+        # Get mood timeline and summary from memory service
+        context = memory_service.get_conversation_context(user_id)
+        mood_timeline = memory_service.get_mood_timeline(user_id)
+        mood_summary = memory_service.get_session_mood_summary(user_id)
+        
+        if not mood_timeline:
+            # Return empty timeline if no mood data exists
+            logger.info(f"No mood data found for user: {user_id}")
+        
+        response = MoodTimelineResponse(
+            user_id=user_id,
+            session_start_time=context.session_start_time,
+            mood_timeline=mood_timeline,
+            session_mood_summary=mood_summary
+        )
+        
+        logger.info(f"Retrieved mood timeline for user: {user_id}, "
+                   f"entries: {len(mood_timeline)}")
+        
+        return response
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error getting mood timeline for user {user_id}: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to get mood timeline")
